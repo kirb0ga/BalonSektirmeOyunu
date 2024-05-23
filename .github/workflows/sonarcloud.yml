@@ -26,7 +26,8 @@ jobs:
         uses: game-ci/unity-builder@v2
         id: builder
         with:
-          unityVersion: '2022.3.28f1'  
+          unityVersion: '2021.1.10f1'  # Unity sürümünü proje sürümünüzle değiştirin
+          activationFile: ${{ secrets.UNITY_LICENSE }}
 
       - name: Cache SonarQube packages
         uses: actions/cache@v2
@@ -44,4 +45,4 @@ jobs:
         run: |
           dotnet sonarscanner begin /k:"BalonSektirmeOyunu" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           dotnet build
-          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}
