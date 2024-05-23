@@ -15,19 +15,19 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Node.js 20 için güncellendi
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3  # Node.js 20 ve .NET 6.0 için güncellendi
         with:
-          dotnet-version: '5.0.x'
+          dotnet-version: '6.0.x'
 
       - name: Setup Unity Builder
         uses: game-ci/unity-builder@v2
         id: builder
         with:
-          unityVersion: '2021.1.10f1'  # Unity sürümünü proje sürümünüzle değiştirin
-          activationFile: ${{ secrets.UNITY_LICENSE }}
+          unityVersion: '2022.3.28f1'  
+          activationKey: ${{ secrets.UNITY_LICENSE }}
 
       - name: Cache SonarQube packages
         uses: actions/cache@v2
