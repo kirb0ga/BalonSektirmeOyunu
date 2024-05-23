@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # Node.js 20 için güncellendi
+        uses: actions/checkout@v4  
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3  # Node.js 20 ve .NET 6.0 için güncellendi
+        uses: actions/setup-dotnet@v3  
         with:
           dotnet-version: '6.0.x'
 
@@ -27,7 +27,6 @@ jobs:
         id: builder
         with:
           unityVersion: '2022.3.28f1'  
-          activationKey: ${{ secrets.UNITY_LICENSE }}
 
       - name: Cache SonarQube packages
         uses: actions/cache@v2
